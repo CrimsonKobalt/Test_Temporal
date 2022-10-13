@@ -10,6 +10,8 @@ public class FormatImpl implements Format {
 	@Override
 	public String composeGreeting(String name) {
 		Random rng = new Random();
+		//simulate dying external API call
+		//Is this how this is supposed to be done? docs unclear
 		if(rng.nextBoolean()) {
 			System.out.println("API call dying randomly...");
 			ActivityExecutionContext ctx = Activity.getExecutionContext();

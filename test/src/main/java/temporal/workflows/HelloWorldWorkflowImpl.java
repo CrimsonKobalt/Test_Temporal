@@ -15,7 +15,6 @@ public class HelloWorldWorkflowImpl implements HelloWorldWorkflow {
 	
 	@Override
 	public String getGreeting(String name) {
-		format.dieRandomly();
 		String res = format.composeGreeting(name);
 		return res;
 	}

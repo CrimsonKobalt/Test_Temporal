@@ -7,12 +7,19 @@ import io.temporal.serviceclient.WorkflowServiceStubsOptions;
 import temporal.shared.TemporalConfig;
 import temporal.workflows.HelloWorldWorkflow;
 
+//"CLIENT"
 public class InitiateHelloWorld {
-	//NOTE: this way of getting the service stubs only works for locally hosted (localhost) temporal server
+	
 	public static void main(String[] args) throws Exception {
-		//WorkflowServiceStubs service = WorkflowServiceStubs.newLocalServiceStubs();
-		WorkflowServiceStubs service = WorkflowServiceStubs.newServiceStubs(
-				WorkflowServiceStubsOptions.newBuilder().setTarget("localhost:7233").build());
+		//will use the auto-configuration from the dev-cluster to try and get the services
+		WorkflowServiceStubs service = WorkflowServiceStubs.newLocalServiceStubs();
+		/*
+		 * Configuring a cluster in a 'non-default' location:
+		 * 
+		 * WorkflowServiceStubs service = WorkflowServiceStubs.newServiceStubs(
+		 *		WorkflowServiceStubsOptions.newBuilder().setTarget("localhost:7233").build());
+		 */
+		
 	
 		WorkflowClient client = WorkflowClient.newInstance(service);
 		WorkflowOptions options = WorkflowOptions.newBuilder()
